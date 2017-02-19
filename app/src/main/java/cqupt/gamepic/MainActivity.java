@@ -3,8 +3,6 @@ package cqupt.gamepic;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,8 +10,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+
 import cqupt.gamepic.config.Config;
 import cqupt.gamepic.view.GameView;
 
@@ -37,8 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mBtnOptions;
     // 游戏面板
     private GameView mGameView;
-    private int[] mResPicId;
-    public static List<Bitmap> mPicList;
 
     public MainActivity() {
         mActivity = this;
@@ -55,18 +50,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         // 初始化View
         initView();
-        mResPicId = new int[]{
-                R.drawable.pic1, R.drawable.pic2, R.drawable.pic3,
-                R.drawable.pic4, R.drawable.pic5, R.drawable.pic6,
-                R.drawable.pic7, R.drawable.pic8, R.drawable.pic9,
-                R.drawable.pic10, R.drawable.pic11, R.drawable.pic12
-        };
-        mPicList = new ArrayList<>();
-        Bitmap[] bitmaps = new Bitmap[mResPicId.length];
-        for (int i = 0; i < bitmaps.length; i++) {
-            bitmaps[i] = BitmapFactory.decodeResource(getResources(), mResPicId[i]);
-            mPicList.add(bitmaps[i]);
-        }
         mGameView = new GameView(this);
         FrameLayout frameLayout = (FrameLayout) findViewById(R.id.game_panel);
         // 为了GameView能居中

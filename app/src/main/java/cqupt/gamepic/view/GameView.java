@@ -342,18 +342,15 @@ public class GameView extends GridLayout implements OnTouchListener {
                             new DialogInterface.OnClickListener() {
 
                                 @Override
-                                public void onClick(DialogInterface arg0,
-                                                    int arg1) {
+                                public void onClick(DialogInterface arg0, int arg1) {
                                     // 重新开始
                                     startGame();
                                 }
                             })
                     .setNegativeButton("Continue",
                             new DialogInterface.OnClickListener() {
-
                                 @Override
-                                public void onClick(DialogInterface arg0,
-                                                    int arg1) {
+                                public void onClick(DialogInterface arg0, int arg1) {
                                     // 继续游戏 修改target
                                     Editor editor = Config.mSp.edit();
                                     if (mTarget == 1024) {
@@ -364,9 +361,21 @@ public class GameView extends GridLayout implements OnTouchListener {
                                         editor.putInt(Config.KEY_GAME_GOAL, 4096);
                                         mTarget = 4096;
                                         MainActivity.getGameActivity().setGoal(4096);
-                                    } else {
+                                    } else if (mTarget == 4096) {
                                         editor.putInt(Config.KEY_GAME_GOAL, 4096);
-                                        mTarget = 4096;
+                                        mTarget = 8192;
+                                        MainActivity.getGameActivity().setGoal(4096);
+                                    }else if (mTarget == 8192) {
+                                        editor.putInt(Config.KEY_GAME_GOAL, 4096);
+                                        mTarget = 16384;
+                                        MainActivity.getGameActivity().setGoal(4096);
+                                    }else if (mTarget == 16384) {
+                                        editor.putInt(Config.KEY_GAME_GOAL, 4096);
+                                        mTarget = 32768;
+                                        MainActivity.getGameActivity().setGoal(4096);
+                                    }else{
+                                        editor.putInt(Config.KEY_GAME_GOAL, 4096);
+                                        mTarget = 65536;
                                         MainActivity.getGameActivity().setGoal(4096);
                                     }
                                     editor.apply();
